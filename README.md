@@ -40,3 +40,5 @@ Then visit `http://localhost:8000`.
 Your app will be live at:
 
 `https://<your-username>.github.io/<your-repo-name>/`
+
+_Deployment note: small README update to trigger a fresh GitHub Pages build._
