@@ -2,14 +2,30 @@
   color-scheme: light;
   --bg-start: #f8fafc;
   --bg-end: #e2e8f0;
-  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: rgba(255, 255, 255, 0.88);
   --text-main: #0f172a;
   --text-muted: #64748b;
   --primary: #2563eb;
   --primary-pressed: #1d4ed8;
   --secondary: #e2e8f0;
   --secondary-pressed: #cbd5e1;
+  --border: rgba(148, 163, 184, 0.35);
   --shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-start: #020617;
+  --bg-end: #0f172a;
+  --card-bg: rgba(15, 23, 42, 0.88);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --primary: #60a5fa;
+  --primary-pressed: #3b82f6;
+  --secondary: #1e293b;
+  --secondary-pressed: #334155;
+  --border: rgba(148, 163, 184, 0.25);
+  --shadow: 0 22px 60px rgba(2, 6, 23, 0.6);
 }
 
 * {
@@ -22,6 +38,7 @@ body {
   font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-main);
   background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  transition: background 280ms ease, color 280ms ease;
 }
 
 .app-shell {
@@ -33,12 +50,22 @@ body {
 
 .counter-card {
   width: min(100%, 420px);
-  padding: 2rem 1.5rem;
+  padding: 1.25rem 1.5rem 2rem;
   border-radius: 1.25rem;
   background: var(--card-bg);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow);
   text-align: center;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  animation: floatIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: background-color 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .label {
@@ -50,10 +77,36 @@ body {
   font-size: 0.8rem;
 }
 
+.icon-btn {
+  border: 0;
+  background: var(--secondary);
+  color: var(--text-main);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.icon-btn:hover {
+  transform: rotate(14deg) scale(1.04);
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
 .counter-value {
   margin: 0.75rem 0 1.5rem;
   font-size: clamp(3rem, 12vw, 5rem);
   line-height: 1;
+}
+
+.counter-value.bump {
+  animation: bump 200ms ease;
 }
 
 .actions {
@@ -71,8 +124,12 @@ body {
   font-weight: 700;
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform 120ms ease, background-color 120ms ease;
+  transition: transform 120ms ease, background-color 120ms ease, filter 120ms ease;
   min-width: 120px;
+}
+
+.btn:hover {
+  filter: brightness(1.03);
 }
 
 .btn:active {
@@ -98,9 +155,35 @@ body {
   background: var(--secondary-pressed);
 }
 
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 360px) {
   .counter-card {
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem 1.5rem;
   }
 
   .btn {
