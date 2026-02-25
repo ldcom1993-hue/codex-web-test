@@ -1,0 +1,10 @@
+{
+  "name": "Mobile Counter",
+  "short_name": "Counter",
+  "description": "A simple mobile-friendly counter with persistent storage.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "icons": []
+}

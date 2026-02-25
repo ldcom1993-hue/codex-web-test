@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Mobile Counter</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="counter-card" aria-live="polite">
+        <p class="label">Count</p>
+        <h1 id="counter" class="counter-value">0</h1>
+        <div class="actions">
+          <button id="incrementBtn" class="btn btn-primary" type="button" aria-label="Increase count">
+            +
+          </button>
+          <button id="resetBtn" class="btn btn-secondary" type="button">
+            Reset
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="app.js" defer></script>
+  </body>
+</html>
