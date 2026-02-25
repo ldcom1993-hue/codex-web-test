@@ -11,7 +11,12 @@
   <body>
     <main class="app-shell">
       <section class="counter-card" aria-live="polite">
-        <p class="label">Count</p>
+        <div class="top-bar">
+          <p class="label">Count</p>
+          <button id="themeToggleBtn" class="icon-btn" type="button" aria-label="Switch to dark mode" title="Toggle theme">
+            <span class="icon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
         <h1 id="counter" class="counter-value">0</h1>
         <div class="actions">
           <button id="incrementBtn" class="btn btn-primary" type="button" aria-label="Increase count">
